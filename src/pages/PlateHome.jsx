@@ -6,7 +6,7 @@ const dishes = [
   { title: 'Signature steak', image: 'steak-white-small-serving', alt: '넓은 흰색 접시 중앙에 작게 담은 스테이크와 감자 퓌레, 브라운 소스' },
   { title: 'Seasonal fish', image: 'fish', alt: '제철 생선과 오르조를 소스에 담은 흰색 접시' },
   { title: 'Fresh pasta', image: 'pasta', alt: '치즈와 허브를 올린 리가토니 파스타 접시' },
-  { title: 'Garden salad', image: 'salad', alt: '싱싱한 채소와 토마토, 크루통을 담은 샐러드 접시' },
+  { title: 'Garden salad', image: 'salad-small-serving', alt: '흰색 접시 중앙에 아담하게 담은 채소와 토마토, 크루통 샐러드' },
   { title: 'Butter shrimp', image: 'shrimp', alt: '새우와 완두콩을 버터 소스에 담은 흰색 접시' },
 ];
 

@@ -14,3 +14,5 @@ steak-white.png: built-in image_gen edit of steak.png. Prompt: change only the b
 shrimp.png: built-in image_gen background-extraction edit of ../menu/food5.png. Prompt: remove only the tabletop; preserve shrimp, peas, butter sauce and white plate; center the full plate on transparent square canvas.
 
 steak-white-small-serving.png: built-in image_gen precise edit of steak-white.png. Prompt: keep the white plate at its original full diameter; shrink only steak, puree and sauce to 65 percent of their previous linear size, centered in the same arrangement; restore empty white porcelain around food; preserve transparent exterior.
+
+salad-small-serving.png: built-in image_gen precise edit of salad.png. Prompt: preserve the entire white porcelain plate at its original full diameter; shrink only the salad serving to about 80 percent linear size, retaining ingredients, arrangement and colors; restore white porcelain around the centered salad and preserve transparent exterior.
