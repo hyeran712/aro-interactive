@@ -12,3 +12,5 @@ Steak asset: steak.png, based on ../main/steak1.png, edited with built-in image_
 
 steak-white.png: built-in image_gen edit of steak.png. Prompt: change only the beige speckled ceramic to clean white porcelain; preserve food, composition, framing and transparent background.
 shrimp.png: built-in image_gen background-extraction edit of ../menu/food5.png. Prompt: remove only the tabletop; preserve shrimp, peas, butter sauce and white plate; center the full plate on transparent square canvas.
+
+steak-white-small-serving.png: built-in image_gen precise edit of steak-white.png. Prompt: keep the white plate at its original full diameter; shrink only steak, puree and sauce to 65 percent of their previous linear size, centered in the same arrangement; restore empty white porcelain around food; preserve transparent exterior.
