@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/aro-interactive/static/css/main.1855addc.css",
-    "main.js": "/aro-interactive/static/js/main.195c3069.js",
+    "main.css": "/aro-interactive/static/css/main.d974d81f.css",
+    "main.js": "/aro-interactive/static/js/main.4bbec7fa.js",
     "index.html": "/aro-interactive/index.html",
-    "main.1855addc.css.map": "/aro-interactive/static/css/main.1855addc.css.map",
-    "main.195c3069.js.map": "/aro-interactive/static/js/main.195c3069.js.map"
+    "main.d974d81f.css.map": "/aro-interactive/static/css/main.d974d81f.css.map",
+    "main.4bbec7fa.js.map": "/aro-interactive/static/js/main.4bbec7fa.js.map"
   },
   "entrypoints": [
-    "static/css/main.1855addc.css",
-    "static/js/main.195c3069.js"
+    "static/css/main.d974d81f.css",
+    "static/js/main.4bbec7fa.js"
   ]
 }
