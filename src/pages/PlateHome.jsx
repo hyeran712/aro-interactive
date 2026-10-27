@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../components/InteractiveHeader';
 
 const dishes = [
-  { title: 'Seasonal fish', image: 'fish', alt: '제철 생선과 오르조를 오렌지빛 소스에 담은 접시' },
+  { title: 'Signature steak', image: 'steak', alt: '스테이크와 감자 퓌레, 브라운 소스를 담은 접시' },
   { title: 'Fresh pasta', image: 'pasta', alt: '치즈와 허브를 올린 리가토니 파스타 접시' },
   { title: 'Garden salad', image: 'salad', alt: '싱싱한 채소와 토마토, 크루통을 담은 샐러드 접시' },
 ];
