@@ -1,6 +1,6 @@
 .plate-home { --plate-paper:#e9e7e1; --plate-ink:#272a26; color:var(--plate-ink); background:var(--plate-paper); }
 .plate-stage { position:relative; height:100svh; min-height:640px; overflow:hidden; isolation:isolate; background:radial-gradient(ellipse at 20% 20%,#f4f3ef77,transparent 60%),radial-gradient(ellipse at 85% 65%,#cbc9c133,transparent 60%),#e9e7e1; outline:none; touch-action:pan-y; }
-.plate-home .plate-stage { padding:0; border:0; }
+.plate-home .plate-stage { padding:0; border:0; touch-action:none; }
 .plate-home .ix-header { pointer-events:none; }
 .plate-home .ix-header > * { pointer-events:auto; }
 .plate-stage::before { content:''; position:absolute; inset:0; pointer-events:none; z-index:-1; opacity:.1; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%235b594f' filter='url(%23n)' opacity='.35' d='M0 0h180v180H0z'/%3E%3C/svg%3E"); }
