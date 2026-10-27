@@ -1,0 +1,78 @@
+.plate-home { --plate-paper:#e9e7e1; --plate-ink:#272a26; color:var(--plate-ink); background:var(--plate-paper); }
+.plate-stage { position:relative; height:100svh; min-height:640px; overflow:hidden; isolation:isolate; background:radial-gradient(ellipse at 20% 20%,#f4f3ef77,transparent 60%),radial-gradient(ellipse at 85% 65%,#cbc9c133,transparent 60%),#e9e7e1; outline:none; touch-action:pan-y; }
+.plate-stage::before { content:''; position:absolute; inset:0; pointer-events:none; z-index:-1; opacity:.1; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%235b594f' filter='url(%23n)' opacity='.35' d='M0 0h180v180H0z'/%3E%3C/svg%3E"); }
+.plate-home .ix-header { background:transparent; color:var(--plate-ink); border:0; height:112px; padding:0 3.6%; justify-content:space-between; gap:34px; }
+.plate-home .ix-logo { margin-right:auto; }
+.plate-home .ix-logo img { width:83px; height:46px; filter:none; mix-blend-mode:multiply; }
+.plate-home .ix-desktop-nav { display:none; }
+.plate-home .ix-header-quote { margin:0; padding:10px 0; border:0; font-size:12px; letter-spacing:.06em; background:none; }
+.plate-home .ix-header-quote span { display:none; }
+.plate-home .ix-menu-button { display:flex; flex-direction:column; gap:7px; justify-content:center; width:32px; height:40px; padding:0; background:none; border:0; color:inherit; cursor:pointer; }
+.plate-home .ix-menu-button span { width:29px; height:1px; background:currentColor; transition:transform .25s; }
+.plate-home .is-open .ix-menu-button span:first-child { transform:translateY(4px) rotate(45deg); }
+.plate-home .is-open .ix-menu-button span:last-child { transform:translateY(-4px) rotate(-45deg); }
+.plate-copy { position:absolute; left:4%; top:42%; z-index:2; max-width:32%; }
+.plate-copy h1 { font-family:'Cormorant Garamond','Noto Serif KR',serif; font-size:clamp(42px,4.05vw,66px); font-weight:400; line-height:1.1; letter-spacing:-.035em; margin:0 0 21px; animation:plate-title-in .6s both; }
+.plate-count { display:flex; gap:9px; font-family:'Cormorant Garamond',serif; font-size:15px; letter-spacing:.18em; line-height:1.5; font-variant-numeric:tabular-nums; margin:0; }
+.plate-arrows { display:flex; gap:30px; margin-top:32px; }
+.plate-arrows button { display:grid; place-items:center; width:55px; height:55px; color:inherit; border:1px solid #42473c77; border-radius:50%; background:transparent; cursor:pointer; transition:background .25s,transform .25s; }
+.plate-arrows button span { font-family:Georgia,serif; font-size:29px; font-weight:400; line-height:1; transform:translateY(-2px); }
+.plate-arrows button:hover { background:#fff6; transform:scale(1.04); }
+.plate-display { position:absolute; width:min(80svh,62vw); aspect-ratio:1; right:9.2%; top:46.5%; transform:translateY(-50%); }
+.plate-object { position:absolute; inset:0; }
+.plate-photo { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; opacity:0; transform:rotate(-12deg) scale(.96); transition:opacity .65s ease,transform .95s cubic-bezier(.2,.65,.25,1); filter:drop-shadow(14px 25px 15px #413d2b2b); pointer-events:none; }
+.plate-object.from-previous .plate-photo { transform:rotate(12deg) scale(.96); }
+.plate-object .plate-photo.is-active { opacity:1; transform:rotate(0deg) scale(1); }
+.plate-orbit { position:absolute; inset:-3%; border:1px solid #73766c55; border-radius:50%; }
+.plate-dot { position:absolute; width:36px; height:36px; display:grid; place-items:center; transform:translate(-50%,-50%); background:none; border:0; cursor:pointer; z-index:3; padding:0; }
+.plate-dot span { width:10px; height:10px; background:var(--plate-paper); border:1px solid #34392f; border-radius:50%; box-shadow:0 0 0 4px var(--plate-paper); transition:background .2s,transform .2s; }
+.plate-dot.is-selected span { background:#252921; }
+.plate-dot:hover span { transform:scale(1.2); }
+.plate-dot-0 { left:50%; top:0; }
+.plate-dot-1 { left:6.7%; top:25%; }
+.plate-dot-2 { left:93.3%; top:25%; }
+.plate-scroll { position:absolute; bottom:3.8%; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:5px; padding:10px; border:0; color:inherit; background:transparent; cursor:pointer; }
+.plate-scroll > span:first-child { font-family:'Cormorant Garamond',serif; letter-spacing:.19em; font-size:13px; }
+.plate-scroll-arrow { font-size:25px; line-height:1.1; font-weight:300; transition:transform .3s; }
+.plate-scroll:hover .plate-scroll-arrow { transform:translateY(4px); }
+.plate-bottom-nav { position:absolute; bottom:5.5%; right:3.5%; display:flex; align-items:center; gap:30px; font-family:'Cormorant Garamond',serif; font-size:14px; letter-spacing:.1em; }
+.plate-bottom-nav > span { height:20px; width:1px; background:#7d80756b; }
+.plate-bottom-nav a { padding:8px 0; border-bottom:1px solid transparent; transition:border-color .2s; }
+.plate-bottom-nav a:hover { border-color:currentColor; }
+.ix-header .ix-drawer-backdrop { position:fixed; inset:0; z-index:0; background:#1c211a33; backdrop-filter:blur(5px); border:0; padding:0; cursor:pointer; }
+.ix-header .ix-drawer { position:fixed; inset:0 0 0 auto; width:min(440px,90vw); height:100dvh; display:flex; flex-direction:column; padding:100px 45px 35px; background:#f3f1eb; color:#272a26; box-shadow:-12px 0 65px #0001; animation:plate-drawer-in .35s ease-out both; z-index:1; }
+.ix-header .ix-drawer[hidden],.ix-header .ix-drawer-backdrop[hidden] { display:none; }
+.ix-header .ix-drawer-close { position:absolute; top:32px; right:35px; background:none; color:inherit; border:0; font-size:30px; cursor:pointer; width:40px; height:40px; font-weight:300; }
+.ix-drawer-title { margin-bottom:30px; font-family:'Cormorant Garamond',serif; font-size:18px; letter-spacing:.17em; }
+.ix-header .ix-drawer nav { display:flex; flex-direction:column; overflow-y:auto; }
+.ix-header .ix-drawer nav a { display:flex; align-items:center; justify-content:space-between; padding:15px 0; border-bottom:1px solid #454c3e26; font-family:'Cormorant Garamond',serif; font-size:23px; letter-spacing:0; transition:padding .2s; }
+.ix-header .ix-drawer nav a:hover { padding-left:9px; }
+.ix-drawer-footer { margin-top:auto; padding-top:35px; font-size:9px; letter-spacing:.15em; }
+.plate-home :focus-visible,.ix-drawer :focus-visible { outline:2px solid #5b644d; outline-offset:5px; }
+@keyframes plate-title-in { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:none; } }
+@keyframes plate-drawer-in { from { opacity:.5; transform:translateX(40px); } to { opacity:1; transform:none; } }
+@media (min-aspect-ratio:17/10) { .plate-display { width:82svh; top:48%; right:14%; } .plate-copy { top:40%; } }
+@media (max-width:1000px) and (min-width:701px) { .plate-display { width:65vw; right:3.5%; top:44%; } .plate-copy { top:62%; max-width:50%; } .plate-copy h1 { font-size:48px; } .plate-scroll { left:58%; } }
+@media (max-width:700px) {
+ .plate-stage { min-height:660px; height:100svh; }
+ .plate-home .ix-header { height:85px; padding:0 6%; gap:22px; }
+ .plate-home .ix-logo img { width:65px; height:38px; }
+ .plate-home .ix-header-quote { font-size:11px; }
+ .plate-home .ix-menu-button { width:26px; }
+ .plate-home .ix-menu-button span { width:26px; }
+ .plate-display { width:83vw; right:8.5%; top:37%; }
+ .plate-copy { left:8%; top:auto; bottom:16%; max-width:85%; }
+ .plate-copy h1 { font-size:44px; margin-bottom:12px; }
+ .plate-count { font-size:13px; gap:6px; }
+ .plate-arrows { gap:16px; margin-top:22px; }
+ .plate-arrows button { width:44px; height:44px; }
+ .plate-arrows button span { font-size:26px; }
+ .plate-bottom-nav { right:7%; bottom:4.5%; gap:19px; font-size:12px; }
+ .plate-scroll { left:8%; bottom:3.4%; transform:none; padding:6px 0; align-items:flex-start; gap:3px; }
+ .plate-scroll > span:first-child { font-size:10px; letter-spacing:.12em; }
+ .plate-scroll-arrow { padding-left:40px; font-size:22px; }
+ .ix-header .ix-drawer { padding:95px 30px 30px; }
+ .ix-header .ix-drawer nav a { font-size:22px; padding:13px 0; }
+}
+@media (max-width:700px) and (max-height:720px) { .plate-display { width:72vw; right:14%; top:35%; } .plate-copy { bottom:16%; } .plate-copy h1 { font-size:38px; } .plate-arrows { margin-top:14px; } }
+@media (prefers-reduced-motion:reduce) { .plate-home *,.ix-drawer { animation:none!important; transition:none!important; } }

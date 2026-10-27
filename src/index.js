@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import "./interactive.css";
+import "./plate.css";
 import App from "./App";
 import { HashRouter } from "react-router-dom";
 
