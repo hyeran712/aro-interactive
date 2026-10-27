@@ -1,8 +1,8 @@
 {
-  "name": "aro",
+  "name": "aro-interactive",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://hyeran712.github.io/aro1",
+  "homepage": "https://hyeran712.github.io/aro-interactive",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",

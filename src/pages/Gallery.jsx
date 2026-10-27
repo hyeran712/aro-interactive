@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import PhotoSlot from "../components/PhotoSlot";
@@ -90,7 +91,8 @@ const CATS = [
 ];
 
 function Gallery() {
-  const [active, setActive] = useState("ALL");
+  const [params] = useSearchParams();
+  const [active, setActive] = useState(() => CATS.includes(params.get('category')) ? params.get('category') : "ALL");
 
   const visible =
     active === "ALL" ? ITEMS : ITEMS.filter((item) => item.cat === active);
