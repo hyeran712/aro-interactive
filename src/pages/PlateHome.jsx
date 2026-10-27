@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../components/InteractiveHeader';
 
 const dishes = [
-  { title: 'Signature steak', image: 'steak-white', alt: '흰색 접시에 담은 스테이크와 감자 퓌레, 브라운 소스' },
+  { title: 'Signature steak', image: 'steak-white-small-serving', alt: '넓은 흰색 접시 중앙에 작게 담은 스테이크와 감자 퓌레, 브라운 소스' },
   { title: 'Seasonal fish', image: 'fish', alt: '제철 생선과 오르조를 소스에 담은 흰색 접시' },
   { title: 'Fresh pasta', image: 'pasta', alt: '치즈와 허브를 올린 리가토니 파스타 접시' },
   { title: 'Garden salad', image: 'salad', alt: '싱싱한 채소와 토마토, 크루통을 담은 샐러드 접시' },
@@ -79,7 +79,7 @@ export default function PlateHome() {
         </div>
       </div>
 
-      <div className={`plate-display${dishes[active].image === 'steak-white' ? ' is-steak' : ''}`}>
+      <div className="plate-display">
         <div className="plate-orbit" aria-label="요리 선택">
           {dishes.map((dish, index) => {
             const angle = (-90 + index * 360 / dishes.length) * Math.PI / 180;

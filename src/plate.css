@@ -24,8 +24,6 @@
 .plate-arrows button:hover { background:#fff6; transform:scale(1.04); }
 .plate-display { position:absolute; width:min(80svh,62vw); aspect-ratio:1; right:9.2%; top:46.5%; transform:translateY(-50%); }
 .plate-object { position:absolute; inset:0; }
-.plate-display.is-steak .plate-object { inset:20%; }
-.plate-display.is-steak .plate-orbit { inset:18.2%; }
 .plate-photo { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; opacity:0; transform:rotate(-12deg) scale(.96); transition:opacity .65s ease,transform .95s cubic-bezier(.2,.65,.25,1); filter:drop-shadow(14px 25px 15px #413d2b2b); pointer-events:none; }
 .plate-object.from-previous .plate-photo { transform:rotate(12deg) scale(.96); }
 .plate-object .plate-photo.is-active { opacity:1; transform:rotate(0deg) scale(1); }
