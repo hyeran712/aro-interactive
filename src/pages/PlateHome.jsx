@@ -1,11 +1,13 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/InteractiveHeader';
 
 const dishes = [
-  { title: 'Signature steak', image: 'steak', alt: '스테이크와 감자 퓌레, 브라운 소스를 담은 접시' },
+  { title: 'Signature steak', image: 'steak-white', alt: '흰색 접시에 담은 스테이크와 감자 퓌레, 브라운 소스' },
+  { title: 'Seasonal fish', image: 'fish', alt: '제철 생선과 오르조를 소스에 담은 흰색 접시' },
   { title: 'Fresh pasta', image: 'pasta', alt: '치즈와 허브를 올린 리가토니 파스타 접시' },
   { title: 'Garden salad', image: 'salad', alt: '싱싱한 채소와 토마토, 크루통을 담은 샐러드 접시' },
+  { title: 'Butter shrimp', image: 'shrimp', alt: '새우와 완두콩을 버터 소스에 담은 흰색 접시' },
 ];
 
 export default function PlateHome() {
@@ -13,7 +15,7 @@ export default function PlateHome() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [direction, setDirection] = useState(1);
   const stage = useRef(null);
-  const wheel = useRef({ time: 0, total: 0, changed: 0 });
+  const invitation = useRef(null);
   const touch = useRef(null);
   const select = useCallback((index, dir = 1) => {
     setDirection(dir);
@@ -24,38 +26,18 @@ export default function PlateHome() {
     setActive(value => (value + delta + dishes.length) % dishes.length);
   }, []);
 
-  useEffect(() => {
-    const element = stage.current;
-    const scroll = event => {
-      if (menuOpen || event.ctrlKey || Math.abs(event.deltaY) < 2) return;
-      event.preventDefault();
-      const now = performance.now();
-      const state = wheel.current;
-      if (now - state.changed < 850) return;
-      if (now - state.time > 180 || Math.sign(state.total) !== Math.sign(event.deltaY)) state.total = 0;
-      state.time = now;
-      state.total += event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? window.innerHeight : 1);
-      if (Math.abs(state.total) >= 55) {
-        next(state.total > 0 ? 1 : -1);
-        state.total = 0;
-        state.changed = now;
-      }
-    };
-    element.addEventListener('wheel', scroll, { passive: false });
-    return () => element.removeEventListener('wheel', scroll);
-  }, [menuOpen, next]);
-
   return <div className="plate-home">
     <Header onMenuChange={setMenuOpen} />
-    <main className="plate-stage" ref={stage} inert={menuOpen ? true : undefined}
+    <main inert={menuOpen ? true : undefined}>
+    <section className="plate-stage" ref={stage}
       aria-label="ARO 시그니처 메뉴" aria-roledescription="캐러셀" tabIndex={0}
       onKeyDown={event => {
         if (event.target !== event.currentTarget) return;
-        if (['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp', 'Home', 'End'].includes(event.key)) {
+        if (['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) {
           event.preventDefault();
           if (event.key === 'Home') select(0);
           else if (event.key === 'End') select(dishes.length - 1);
-          else next(['ArrowRight', 'ArrowDown'].includes(event.key) ? 1 : -1);
+          else next(event.key === 'ArrowRight' ? 1 : -1);
         }
       }}
       onTouchStart={event => { if (event.touches.length === 1) touch.current = { x: event.touches[0].clientX, y: event.touches[0].clientY }; }}
@@ -63,13 +45,13 @@ export default function PlateHome() {
         if (!touch.current || !event.changedTouches.length) return;
         const end = event.changedTouches[0];
         const x = touch.current.x - end.clientX; const y = touch.current.y - end.clientY;
-        if (Math.max(Math.abs(x), Math.abs(y)) > 45) next((Math.abs(x) > Math.abs(y) ? x : y) > 0 ? 1 : -1);
+        if (Math.abs(x) > 45 && Math.abs(x) > Math.abs(y) * 1.3) next(x > 0 ? 1 : -1);
         touch.current = null;
       }} onTouchCancel={() => { touch.current = null; }}>
 
       <div className="plate-copy" aria-live="polite" aria-atomic="true">
         <h1 key={active}>{dishes[active].title}</h1>
-        <p className="plate-count"><span>0{active + 1}</span><span aria-hidden="true"> / </span><span>03</span></p>
+        <p className="plate-count"><span>{String(active + 1).padStart(2, '0')}</span><span aria-hidden="true"> / </span><span>{String(dishes.length).padStart(2, '0')}</span></p>
         <div className="plate-arrows">
           <button type="button" onClick={() => next(-1)} aria-label="이전 요리"><span aria-hidden="true">‹</span></button>
           <button type="button" onClick={() => next(1)} aria-label="다음 요리"><span aria-hidden="true">›</span></button>
@@ -78,15 +60,27 @@ export default function PlateHome() {
 
       <div className="plate-display">
         <div className="plate-orbit" aria-label="요리 선택">
-          {dishes.map((dish, index) => <button key={dish.image} className={`plate-dot plate-dot-${index}${active === index ? ' is-selected' : ''}`} type="button" aria-label={`${dish.title} 보기`} aria-pressed={active === index} onClick={() => select(index, index >= active ? 1 : -1)}><span/></button>)}
+          {dishes.map((dish, index) => {
+            const angle = (-90 + index * 360 / dishes.length) * Math.PI / 180;
+            return <button key={dish.image} className={`plate-dot${active === index ? ' is-selected' : ''}`} style={{left: `${50 + 50 * Math.cos(angle)}%`, top: `${50 + 50 * Math.sin(angle)}%`}} type="button" aria-label={`${dish.title} 보기`} aria-pressed={active === index} onClick={() => select(index, index >= active ? 1 : -1)}><span/></button>;
+          })}
         </div>
         <div className={`plate-object ${direction < 0 ? 'from-previous' : 'from-next'}`}>
           {dishes.map((dish, index) => <img key={dish.image} src={`${process.env.PUBLIC_URL}/images/plates/${dish.image}.png`} alt={dish.alt} className={`plate-photo${active === index ? ' is-active' : ''}`} aria-hidden={active !== index} fetchPriority={index === 0 ? 'high' : 'auto'} draggable="false" />)}
         </div>
       </div>
 
-      <button className="plate-scroll" type="button" onClick={() => next(1)} aria-label="다음 요리 맛보기"><span>SCROLL TO TASTE</span><span className="plate-scroll-arrow" aria-hidden="true">↓</span></button>
+      <button className="plate-scroll" type="button" onClick={() => {
+        invitation.current?.scrollIntoView({behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+        invitation.current?.focus({preventScroll: true});
+      }} aria-label="아래 행사 문의 영역으로 이동"><span>SCROLL TO DISCOVER</span><span className="plate-scroll-arrow" aria-hidden="true">↓</span></button>
       <nav className="plate-bottom-nav" aria-label="빠른 메뉴"><Link to="/menu">MENU</Link><span aria-hidden="true"/><Link to="/gallery">EVENTS</Link></nav>
+    </section>
+    <section className="ix-invitation plate-invitation" ref={invitation} tabIndex={-1} aria-labelledby="plate-invitation-title">
+      <img src={`${process.env.PUBLIC_URL}/images/main/table2.png`} alt="초록 식물과 흰 테이블보로 꾸민 ARO 행사 식탁" loading="lazy" />
+      <div><span className="ix-micro">YOUR NEXT BEAUTIFUL GATHERING</span><h2 id="plate-invitation-title">Let’s set<br/><em>the table.</em></h2><Link to="/contact" className="ix-text-link">REQUEST A QUOTE <span aria-hidden="true">↗</span></Link></div>
+    </section>
     </main>
+    <footer className="ix-footer" inert={menuOpen ? true : undefined}><Link to="/" className="ix-footer-wordmark" aria-label="ARO 홈">aro</Link><p>FOOD FOR LASTING MOMENTS</p><nav aria-label="하단 메뉴"><Link to="/journal">JOURNAL</Link><Link to="/contact">CONTACT</Link><a href="https://www.instagram.com/atelieraro/" target="_blank" rel="noreferrer">INSTAGRAM ↗</a></nav><span>© {new Date().getFullYear()} ARO CATERING & EVENTS</span></footer>
   </div>;
 }

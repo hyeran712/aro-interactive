@@ -1,7 +1,11 @@
 .plate-home { --plate-paper:#e9e7e1; --plate-ink:#272a26; color:var(--plate-ink); background:var(--plate-paper); }
 .plate-stage { position:relative; height:100svh; min-height:640px; overflow:hidden; isolation:isolate; background:radial-gradient(ellipse at 20% 20%,#f4f3ef77,transparent 60%),radial-gradient(ellipse at 85% 65%,#cbc9c133,transparent 60%),#e9e7e1; outline:none; touch-action:pan-y; }
+.plate-home .plate-stage { padding:0; border:0; }
+.plate-home .ix-header { pointer-events:none; }
+.plate-home .ix-header > * { pointer-events:auto; }
 .plate-stage::before { content:''; position:absolute; inset:0; pointer-events:none; z-index:-1; opacity:.1; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%235b594f' filter='url(%23n)' opacity='.35' d='M0 0h180v180H0z'/%3E%3C/svg%3E"); }
 .plate-home .ix-header { background:transparent; color:var(--plate-ink); border:0; height:112px; padding:0 3.6%; justify-content:space-between; gap:34px; }
+.plate-home .ix-header.is-scrolled { background:rgba(233,231,225,.96); backdrop-filter:blur(12px); box-shadow:0 1px 0 #272a2610; }
 .plate-home .ix-logo { margin-right:auto; }
 .plate-home .ix-logo img { width:83px; height:46px; filter:none; mix-blend-mode:multiply; }
 .plate-home .ix-desktop-nav { display:none; }
@@ -39,6 +43,10 @@
 .plate-bottom-nav > span { height:20px; width:1px; background:#7d80756b; }
 .plate-bottom-nav a { padding:8px 0; border-bottom:1px solid transparent; transition:border-color .2s; }
 .plate-bottom-nav a:hover { border-color:currentColor; }
+.plate-home .plate-invitation { position:relative; min-height:580px; padding:95px 7%; border:0; color:#f4f1ec; background:#242725; isolation:isolate; }
+.plate-invitation h2 { font-family:'Cormorant Garamond','Noto Serif KR',serif; font-weight:400; letter-spacing:-.045em; line-height:.94; }
+.plate-invitation .ix-text-link { display:inline-flex; align-items:center; justify-content:space-between; gap:55px; min-width:250px; padding:12px 0; border-bottom:1px solid currentColor; font-size:10px; letter-spacing:.18em; }
+.plate-invitation .ix-text-link span { font-size:22px; }
 .ix-header .ix-drawer-backdrop { position:fixed; inset:0; z-index:0; background:#1c211a33; backdrop-filter:blur(5px); border:0; padding:0; cursor:pointer; }
 .ix-header .ix-drawer { position:fixed; inset:0 0 0 auto; width:min(440px,90vw); height:100dvh; display:flex; flex-direction:column; padding:100px 45px 35px; background:#f3f1eb; color:#272a26; box-shadow:-12px 0 65px #0001; animation:plate-drawer-in .35s ease-out both; z-index:1; }
 .ix-header .ix-drawer[hidden],.ix-header .ix-drawer-backdrop[hidden] { display:none; }
@@ -71,6 +79,7 @@
  .plate-scroll { left:8%; bottom:3.4%; transform:none; padding:6px 0; align-items:flex-start; gap:3px; }
  .plate-scroll > span:first-child { font-size:10px; letter-spacing:.12em; }
  .plate-scroll-arrow { padding-left:40px; font-size:22px; }
+ .plate-home .plate-invitation { min-height:490px; padding:75px 7%; }
  .ix-header .ix-drawer { padding:95px 30px 30px; }
  .ix-header .ix-drawer nav a { font-size:22px; padding:13px 0; }
 }
