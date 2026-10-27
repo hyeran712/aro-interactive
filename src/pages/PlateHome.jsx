@@ -79,7 +79,7 @@ export default function PlateHome() {
         </div>
       </div>
 
-      <div className="plate-display">
+      <div className={`plate-display${dishes[active].image === 'steak-white' ? ' is-steak' : ''}`}>
         <div className="plate-orbit" aria-label="요리 선택">
           {dishes.map((dish, index) => {
             const angle = (-90 + index * 360 / dishes.length) * Math.PI / 180;
